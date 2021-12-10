@@ -12,5 +12,5 @@ A single list of items is displayed to the users. The list
 
 I add comments to most lines of code.
 I recorded a short video of the app running on Android Emulator. Please see .
-
+For the next step, I will test it on my phone and record another video. And I will work on the UI to make it more user-friendly.
 If you have any question, please email me at jsun2010@gmail.com.
