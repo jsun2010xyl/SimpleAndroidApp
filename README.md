@@ -1,5 +1,7 @@
 # JsonKotlinApp
+
 by Jingyan Sun
+
 This is an independent Android project using Kotlin.
 
 Android SDK 31
