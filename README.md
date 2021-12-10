@@ -10,7 +10,7 @@ A single list of items is displayed to the users. The list
  - Displays every item left grouped by "listId"
  - Displays every item left in ascending order (sorted first by "listId", then by "name")
 
-I add comments to most lines of code.
+I add comments to most lines of code, so it can be easily understood.
 
 I recorded a short video of the app running on Android Emulator. Please see .
 
