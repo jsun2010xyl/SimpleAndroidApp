@@ -18,5 +18,3 @@ I add comments to most lines of code, so it can be easily understood.
 I also recorded a short video of the app running on Android Emulator. Please see https://youtu.be/a-VfpmOSK74.
 
 For the next step, I will test it on my phone and record another video. And I will work on the UI to make it more user-friendly.
-
-If you have any question, please email me at jsun2010@gmail.com.
