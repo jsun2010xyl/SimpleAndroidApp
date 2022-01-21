@@ -1,11 +1,13 @@
-package com.example.jsonkotlin1
+package com.example.jsonkotlin1.views
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jsonkotlin1.CustomAdapter
+import com.example.jsonkotlin1.R
+import com.example.jsonkotlin1.models.Item
 import org.json.JSONArray
 import org.json.JSONTokener
 import java.net.HttpURLConnection

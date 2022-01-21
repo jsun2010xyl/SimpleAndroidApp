@@ -3,9 +3,9 @@ package com.example.jsonkotlin1
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jsonkotlin1.models.Item
 
 class CustomAdapter(private val mList: MutableList<Item>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
@@ -22,14 +22,14 @@ class CustomAdapter(private val mList: MutableList<Item>) : RecyclerView.Adapter
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val ItemsViewModel = mList[position]
+        val itemsView = mList[position]
 
         // sets the listId to the textView1 from our itemHolder class
-        holder.textView1.text = ItemsViewModel.listId.toString()
+        holder.textView1.text = itemsView.listId.toString()
         // sets the name to the textView2 from our itemHolder class
-        holder.textView2.text = ItemsViewModel.name
+        holder.textView2.text = itemsView.name
         // sets the id to the textView1 from our itemHolder class
-        holder.textView3.text = ItemsViewModel.id.toString()
+        holder.textView3.text = itemsView.id.toString()
 
     }
 
