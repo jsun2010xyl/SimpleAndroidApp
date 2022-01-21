@@ -10,13 +10,15 @@ import org.json.JSONArray
 import org.json.JSONTokener
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.concurrent.CountDownLatch
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     // Use items to store the data from the json file
     private val items = mutableListOf<Item>()
+    private val latch = CountDownLatch(1)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    fun getData(){
         // Start a new thread because we cannot connect to the Internet on the main thread
         thread(start=true) {
             // Use try-catch to handle exceptions
@@ -48,12 +50,18 @@ class MainActivity : AppCompatActivity() {
                 val c1 = compareBy<Item> { it.listId }
                 val c2 = c1.thenBy { it.name }
                 items.sortWith(c2)
+                latch.countDown()
 
             }catch(e: Exception){
                 // Record the exception information
                 Log.i("Exception msg",e.toString())
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        getData()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -64,25 +72,11 @@ class MainActivity : AppCompatActivity() {
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-        if ( items == null ){
-            // If an exception happens
-            val text = "Something is wrong. There is an exception happened."
-            val duration = Toast.LENGTH_SHORT
-            // Show a toast message
-            val toast = Toast.makeText(applicationContext, text, duration)
-            toast.show()
+        latch.await()
+        // This will pass the List to our Adapter
+        val adapter = CustomAdapter(items)
+        // Setting the Adapter with the recyclerview
+        recyclerview.adapter = adapter
 
-        }else{
-            // Wait until we get the data from the json file on aws
-            while (true){
-                if (items.size>0){
-                    // This will pass the List to our Adapter
-                    val adapter = CustomAdapter(items)
-                    // Setting the Adapter with the recyclerview
-                    recyclerview.adapter = adapter
-                    break
-                }
-            }
-        }
     }
 }
