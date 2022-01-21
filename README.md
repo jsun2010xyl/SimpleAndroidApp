@@ -1,4 +1,4 @@
-# JsonKotlinApp
+# SimpleAndroidApp
 
 by Jingyan Sun
 
