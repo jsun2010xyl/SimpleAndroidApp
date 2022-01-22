@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val items = mutableListOf<Item>()
     private val latch = CountDownLatch(1)
 
+    /*
     fun getData(){
         // Start a new thread because we cannot connect to the Internet on the main thread
         thread(start=true) {
@@ -62,11 +63,11 @@ class MainActivity : AppCompatActivity() {
                 Log.i("Exception msg",e.toString())
             }
         }
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        getData()
+        //getData()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -79,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-        latch.await()
+        //latch.await()
         // This will pass the List to our Adapter
         val adapter = CustomAdapter(items)
         // Setting the Adapter with the recyclerview
