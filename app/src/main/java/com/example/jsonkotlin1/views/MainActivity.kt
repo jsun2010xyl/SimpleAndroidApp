@@ -5,8 +5,11 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.ViewModelProvider
 import com.example.jsonkotlin1.R
 import com.example.jsonkotlin1.models.Item
+import com.example.jsonkotlin1.utilities.InjectorUtils
+import com.example.jsonkotlin1.viewmodels.ItemViewModel
 import org.json.JSONArray
 import org.json.JSONTokener
 import java.net.HttpURLConnection
@@ -67,6 +70,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initializeUi()
+
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
 
@@ -78,6 +83,13 @@ class MainActivity : AppCompatActivity() {
         val adapter = CustomAdapter(items)
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
+
+    }
+
+    private fun initializeUi(){
+        val factory = InjectorUtils.provideItemsViewModelFactory()
+        val viewModel = ViewModelProvider(this, factory).get(ItemViewModel::class.java)
+
 
     }
 }
