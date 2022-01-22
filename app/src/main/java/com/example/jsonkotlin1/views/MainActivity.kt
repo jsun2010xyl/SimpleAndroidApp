@@ -1,17 +1,24 @@
 package com.example.jsonkotlin1.views
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonkotlin1.R
 import com.example.jsonkotlin1.models.Item
+import com.example.jsonkotlin1.models.ItemRepository
+import com.example.jsonkotlin1.utilities.InjectorUtils
+import com.example.jsonkotlin1.utilities.Latch
+import com.example.jsonkotlin1.viewmodels.ItemViewModel
+import com.example.jsonkotlin1.viewmodels.ItemViewModelFactory
 import java.util.concurrent.CountDownLatch
 
 class MainActivity : AppCompatActivity() {
     // Use items to store the data from the json file
     private val items = mutableListOf<Item>()
-    private val latch = CountDownLatch(1)
+    //private val latch = CountDownLatch(1)
 
     /*
     fun getData(){
@@ -55,23 +62,25 @@ class MainActivity : AppCompatActivity() {
         }
     }*/
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var viewModel: ItemViewModel
+    private lateinit var recyclerview: RecyclerView
 
-        //getData()
+    override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         // getting the recyclerview by its id
-        val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
+        recyclerview = findViewById(R.id.recyclerview)
+
+        val factory = InjectorUtils.provideItemViewModelFactory()
+        viewModel = ViewModelProvider(this, factory).get(ItemViewModel::class.java)
 
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-        //latch.await()
-        // This will pass the List to our Adapter
-        val adapter = CustomAdapter(items)
+        //Latch.latch1.await()
+        val adapter = viewModel.getItems().value?.let { CustomAdapter(it) }
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
 

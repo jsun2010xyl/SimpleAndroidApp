@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonkotlin1.R
 import com.example.jsonkotlin1.models.Item
 
-class CustomAdapter(private val mList: MutableList<Item>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(private val mList: List<Item>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
