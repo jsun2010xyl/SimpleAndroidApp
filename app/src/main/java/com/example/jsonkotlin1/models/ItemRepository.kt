@@ -2,6 +2,9 @@ package com.example.jsonkotlin1.models
 
 class ItemRepository private constructor (private val itemDao: FakeItemDao) {
 
+    // Retrieve the data from aws
+    // fun getItems() { }
+
     fun getItems() = itemDao.getItems()
 
     companion object {

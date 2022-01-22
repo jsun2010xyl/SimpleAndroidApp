@@ -3,6 +3,7 @@ package com.example.jsonkotlin1.views
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.ViewModelProvider
@@ -90,6 +91,11 @@ class MainActivity : AppCompatActivity() {
         val factory = InjectorUtils.provideItemsViewModelFactory()
         val viewModel = ViewModelProvider(this, factory).get(ItemViewModel::class.java)
 
+        /*
+        viewModel.getItems().observe(this, Observer {
+
+        })
+        */
 
     }
 }
