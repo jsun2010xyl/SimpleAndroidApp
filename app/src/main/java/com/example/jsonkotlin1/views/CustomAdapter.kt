@@ -1,10 +1,11 @@
-package com.example.jsonkotlin1
+package com.example.jsonkotlin1.views
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jsonkotlin1.R
 import com.example.jsonkotlin1.models.Item
 
 class CustomAdapter(private val mList: MutableList<Item>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
