@@ -7,7 +7,7 @@ import org.json.JSONTokener
 import java.net.HttpURLConnection
 import java.net.URL
 
-class ItemRepository private constructor () {
+class ItemRepository() {
 
     fun getItems() : MutableLiveData<List<Item>>{
         val data = MutableLiveData<List<Item>>()
