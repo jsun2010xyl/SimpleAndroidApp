@@ -24,9 +24,6 @@ class ItemRepository() {
     private fun setItems(){
         // TODO
 
-
-
-
                 val connection =
                     URL("https://fetch-hiring.s3.amazonaws.com/hiring.json").openConnection() as HttpURLConnection
                 val data = connection.inputStream.bufferedReader().readText()
@@ -54,8 +51,6 @@ class ItemRepository() {
                 val c1 = compareBy<Item> { it.listId }
                 val c2 = c1.thenBy { it.name }
                 items.sortWith(c2)
-
-
 
 
 
