@@ -1,19 +1,14 @@
 package com.example.jsonkotlin1.views
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonkotlin1.R
-import com.example.jsonkotlin1.models.Item
-import com.example.jsonkotlin1.models.ItemRepository
+import com.example.jsonkotlin1.data.Item
 import com.example.jsonkotlin1.utilities.InjectorUtils
-import com.example.jsonkotlin1.utilities.Latch
 import com.example.jsonkotlin1.viewmodels.ItemViewModel
-import com.example.jsonkotlin1.viewmodels.ItemViewModelFactory
-import java.util.concurrent.CountDownLatch
 
 class MainActivity : AppCompatActivity() {
     // Use items to store the data from the json file

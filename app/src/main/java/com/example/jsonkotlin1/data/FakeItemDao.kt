@@ -1,4 +1,4 @@
-package com.example.jsonkotlin1.models
+package com.example.jsonkotlin1.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

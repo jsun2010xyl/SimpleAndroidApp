@@ -2,7 +2,7 @@ package com.example.jsonkotlin1.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.jsonkotlin1.models.ItemRepository
+import com.example.jsonkotlin1.data.ItemRepository
 
 class ItemViewModelFactory(private val itemRepository: ItemRepository)
     : ViewModelProvider.Factory {

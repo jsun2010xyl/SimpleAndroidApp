@@ -1,8 +1,7 @@
-package com.example.jsonkotlin1.models
+package com.example.jsonkotlin1.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.jsonkotlin1.utilities.Latch
 import org.json.JSONArray
 import org.json.JSONTokener
 import java.net.HttpURLConnection
@@ -23,7 +22,6 @@ class ItemRepository() {
         items.add(item)
     }
 
-    // Retrieve the data from aws
     private fun setItems(){
         // TODO : 这里有问题，无法显示数据，只有空白
         // TODO : 不能联网或者不能找到这个文件怎么办？

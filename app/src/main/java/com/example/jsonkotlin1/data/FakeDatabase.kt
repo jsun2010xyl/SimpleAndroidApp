@@ -1,4 +1,4 @@
-package com.example.jsonkotlin1.models
+package com.example.jsonkotlin1.data
 
 class FakeDatabase private constructor() {
 
