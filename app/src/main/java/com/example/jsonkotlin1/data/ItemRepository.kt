@@ -6,13 +6,12 @@ import org.json.JSONArray
 import org.json.JSONTokener
 import java.net.HttpURLConnection
 import java.net.URL
-import kotlin.concurrent.thread
 
 class ItemRepository() {
 
     fun getItems() : MutableLiveData<List<Item>>{
         val data = MutableLiveData<List<Item>>()
-        setItems()
+        setItems2()
         data.value = items
         return data
     }
@@ -23,18 +22,17 @@ class ItemRepository() {
     }
 
     private fun setItems(){
-        // TODO : 这里有问题，无法显示数据，只有空白
-        // TODO : 不能联网或者不能找到这个文件怎么办？
-        thread (start = true){
-            //Latch.latch1.countDown()
-            try {
-                // Get the json file from aws
+        // TODO
+
+
+
+
                 val connection =
                     URL("https://fetch-hiring.s3.amazonaws.com/hiring.json").openConnection() as HttpURLConnection
                 val data = connection.inputStream.bufferedReader().readText()
-                // Parse the json file
+
                 val jsonArray = JSONTokener(data).nextValue() as JSONArray
-                // Store the data in the list "items"
+
                 for (i in 0 until jsonArray.length()) {
                     // filter out those whose name is null
                     if (!jsonArray.getJSONObject(i).isNull("name")) {
@@ -46,7 +44,7 @@ class ItemRepository() {
                                 jsonArray.getJSONObject(i).getInt("listId"),
                                 jsonArray.getJSONObject(i).getString("name")
                             )
-                            // add the item to the list
+
                             items.add(item)
                         }
                     }
@@ -57,13 +55,10 @@ class ItemRepository() {
                 val c2 = c1.thenBy { it.name }
                 items.sortWith(c2)
 
-            }catch(e: Exception){
-                // Record the exception information
-                Log.i("Exception msg",e.toString())
-            }
 
 
-        }
+
+
     }
 
     private val items = mutableListOf<Item>()
