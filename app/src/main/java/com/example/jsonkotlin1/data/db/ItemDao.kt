@@ -14,6 +14,6 @@ interface ItemDao {
     fun upsert(itemEntry: List<Item>)
 
     // TODO : 排序
-    @Query("select * from Items where name is not null and name <> ''")
+    @Query("select * from Items where name is not null and name <> '' group by listId order by name ASC")
     fun getItems(): LiveData<List<Item>>
 }
