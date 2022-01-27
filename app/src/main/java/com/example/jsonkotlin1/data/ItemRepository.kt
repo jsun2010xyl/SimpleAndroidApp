@@ -1,7 +1,7 @@
 package com.example.jsonkotlin1.data
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.jsonkotlin1.data.db.entity.Item
 import org.json.JSONArray
 import org.json.JSONTokener
 import java.net.HttpURLConnection

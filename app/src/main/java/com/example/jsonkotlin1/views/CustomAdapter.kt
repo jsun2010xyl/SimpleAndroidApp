@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonkotlin1.R
-import com.example.jsonkotlin1.data.Item
+import com.example.jsonkotlin1.data.db.entity.Item
 
 class CustomAdapter(private val mList: List<Item>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 

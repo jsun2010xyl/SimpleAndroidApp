@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonkotlin1.R
-import com.example.jsonkotlin1.data.Item
+import com.example.jsonkotlin1.data.db.entity.Item
 import com.example.jsonkotlin1.utilities.InjectorUtils
 import com.example.jsonkotlin1.viewmodels.ItemViewModel
 
