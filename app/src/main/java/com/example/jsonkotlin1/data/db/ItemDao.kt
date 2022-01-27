@@ -13,7 +13,7 @@ interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun upsert(itemEntry: List<Item>)
 
-    // TODO : 要改成把空白过滤掉然后排序
-    @Query("select * from Items")
+    // TODO : 排序
+    @Query("select * from Items where name is not null and name <> ''")
     fun getItems(): LiveData<List<Item>>
 }
