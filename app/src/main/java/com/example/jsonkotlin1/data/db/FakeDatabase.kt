@@ -2,7 +2,7 @@ package com.example.jsonkotlin1.data.db
 
 class FakeDatabase private constructor() {
 
-    var itemDao = FakeItemDao()
+    var itemDao = ItemDao()
         private set
 
     companion object {
