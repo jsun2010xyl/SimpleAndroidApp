@@ -13,7 +13,7 @@ interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun upsert(itemEntry: List<Item>)
 
-    // TODO : 排序
+    // TODO : 是不是没问题了？
     @Query("select * from Items where name is not null and name <> '' group by listId order by name ASC")
     fun getItems(): LiveData<List<Item>>
 }
