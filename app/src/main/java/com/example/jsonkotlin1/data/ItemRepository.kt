@@ -21,40 +21,35 @@ class ItemRepository() {
         items.add(item)
     }
 
-    private fun setItems(){
-        // TODO
+    /*
+    private fun setItems0(){
+        val connection =
+            URL("https://fetch-hiring.s3.amazonaws.com/hiring.json").openConnection() as HttpURLConnection
+        val data = connection.inputStream.bufferedReader().readText()
 
-                val connection =
-                    URL("https://fetch-hiring.s3.amazonaws.com/hiring.json").openConnection() as HttpURLConnection
-                val data = connection.inputStream.bufferedReader().readText()
+        val jsonArray = JSONTokener(data).nextValue() as JSONArray
 
-                val jsonArray = JSONTokener(data).nextValue() as JSONArray
-
-                for (i in 0 until jsonArray.length()) {
-                    // filter out those whose name is null
-                    if (!jsonArray.getJSONObject(i).isNull("name")) {
-                        val name: String? = jsonArray.getJSONObject(i).getString("name")
-                        // filter out those whose name is empty
-                        if (name != "") {
-                            val item = Item(
-                                jsonArray.getJSONObject(i).getInt("id"),
-                                jsonArray.getJSONObject(i).getInt("listId"),
-                                jsonArray.getJSONObject(i).getString("name")
-                            )
-
-                            items.add(item)
-                        }
-                    }
+        for (i in 0 until jsonArray.length()) {
+            // filter out those whose name is null
+            if (!jsonArray.getJSONObject(i).isNull("name")) {
+                val name: String? = jsonArray.getJSONObject(i).getString("name")
+                // filter out those whose name is empty
+                if (name != "") {
+                    val item = Item(
+                        jsonArray.getJSONObject(i).getInt("id"),
+                        jsonArray.getJSONObject(i).getInt("listId"),
+                        jsonArray.getJSONObject(i).getString("name")
+                    )
+                    items.add(item)
                 }
+            }
+        }
 
-                // sort
-                val c1 = compareBy<Item> { it.listId }
-                val c2 = c1.thenBy { it.name }
-                items.sortWith(c2)
-
-
-
-    }
+        // sort
+        val c1 = compareBy<Item> { it.listId }
+        val c2 = c1.thenBy { it.name }
+        items.sortWith(c2)
+    }*/
 
     private val items = mutableListOf<Item>()
 
