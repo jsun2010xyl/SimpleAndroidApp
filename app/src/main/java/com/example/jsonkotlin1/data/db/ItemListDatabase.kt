@@ -8,11 +8,11 @@ import com.example.jsonkotlin1.data.db.entity.Item
 import androidx.room.Room
 
 @Database(entities = [Item::class], version = 1)
-abstract class Database1: RoomDatabase(){
+abstract class ItemListDatabase: RoomDatabase(){
     abstract fun itemDao() : ItemDao
 
     companion object {
-        @Volatile private var instance: Database1? = null
+        @Volatile private var instance: ItemListDatabase? = null
         private val LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
@@ -20,7 +20,7 @@ abstract class Database1: RoomDatabase(){
         }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext, Database1::class.java, "itemdb.db")
+            Room.databaseBuilder(context.applicationContext, ItemListDatabase::class.java, "itemdb.db")
         .build()
     }
 }
