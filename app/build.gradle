@@ -108,4 +108,9 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    implementation "org.kodein.di:kodein-di-generic-jvm:6.3.2"
+    implementation "org.kodein.di:kodein-di-framework-android-x:6.3.2"
+    implementation "androidx.appcompat:appcompat:1.0.2"
+
 }
