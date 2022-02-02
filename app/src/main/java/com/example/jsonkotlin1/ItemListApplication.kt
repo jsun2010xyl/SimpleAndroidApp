@@ -1,6 +1,8 @@
 package com.example.jsonkotlin1
 
 import android.app.Application
+import com.example.jsonkotlin1.data.ConnectivityInterceptor
+import com.example.jsonkotlin1.data.ConnectivityInterceptorImpl
 import com.example.jsonkotlin1.data.db.ItemListDatabase
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -14,5 +16,8 @@ class ItemListApplication: Application(), KodeinAware {
         import (androidXModule(this@ItemListApplication))
 
         bind() from singleton { ItemListDatabase(instance()) }
+        bind() from singleton { instance<ItemListDatabase>().itemDao() }
+        bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
+
     }
 }
