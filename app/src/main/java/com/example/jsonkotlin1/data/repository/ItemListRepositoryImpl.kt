@@ -9,7 +9,19 @@ class ItemListRepositoryImpl(
     private val itemDao : ItemDao,
     private val itemNetworkDataSource : NetworkDataSource
 ) : ItemListRepository {
+
+    init{
+        itemNetworkDataSource.downloadedData.observeForever { newCurrentItemList ->
+            // persist
+        }
+    }
+
     override suspend fun getItemList(): LiveData<ItemList> {
         TODO("Not yet implemented")
+    }
+
+    //                TODO : 这里应该是ItemList还是List<Item>，二者有没区别？
+    private fun persistFetchedCurrentItemList(fetchedItemList: ItemList){
+
     }
 }

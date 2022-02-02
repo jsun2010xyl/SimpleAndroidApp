@@ -2,13 +2,9 @@ package com.example.jsonkotlin1.data
 
 import androidx.lifecycle.MutableLiveData
 import com.example.jsonkotlin1.data.db.entity.Item
-import org.json.JSONArray
-import org.json.JSONTokener
-import java.net.HttpURLConnection
-import java.net.URL
 
 class ItemRepository() {
-
+    // 这个是程序现在正在用的，改了后不用它
     fun getItems() : MutableLiveData<List<Item>>{
         val data = MutableLiveData<List<Item>>()
         setItems2()
