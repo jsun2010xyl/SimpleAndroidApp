@@ -32,33 +32,34 @@ class MainActivity : ScopedActivity(), KodeinAware {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // getting the recyclerview by its id
-        recyclerview = findViewById(R.id.recyclerview)
+
 
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ItemViewModel::class.java)
 
-        bindUI(this)
+        // getting the recyclerview by its id
+        recyclerview = findViewById(R.id.recyclerview)
+        adapter = CustomAdapter(mutableListOf())
+        // Setting the Adapter with the recyclerview
+        recyclerview.adapter = adapter
+        // this creates a vertical layout Manager
+        recyclerview.layoutManager = LinearLayoutManager(this)
 
-
-
-        //val adapter = viewModel.getItems().value?.let { CustomAdapter(it) }
+        bindUI()
 
     }
 
-    private fun bindUI(context: Context) = launch {
+    private fun bindUI() = launch {
         val itemList = viewModel.itemList.await()
         itemList.observe(this@MainActivity, Observer {
             if (it == null) {
+                Log.i("Msg", "it == null")
                 return@Observer
             }
 
-            // TODO : 一片空白，无法显示items
+            // TODO : 无法显示items，这是为什么？
             adapter = CustomAdapter(it)
-            // Setting the Adapter with the recyclerview
-            recyclerview.adapter = adapter
-            // this creates a vertical layout Manager
-            recyclerview.layoutManager = LinearLayoutManager(context)
+            adapter.notifyDataSetChanged()
 
         })
     }
