@@ -1,9 +1,9 @@
 package com.example.jsonkotlin1
 
 import android.app.Application
-import com.example.jsonkotlin1.data.ConnectivityInterceptor
-import com.example.jsonkotlin1.data.ConnectivityInterceptorImpl
-import com.example.jsonkotlin1.data.ItemApiService
+import com.example.jsonkotlin1.data.network.ConnectivityInterceptor
+import com.example.jsonkotlin1.data.network.ConnectivityInterceptorImpl
+import com.example.jsonkotlin1.data.network.ItemApiService
 import com.example.jsonkotlin1.data.db.ItemListDatabase
 import com.example.jsonkotlin1.data.network.NetworkDataSource
 import com.example.jsonkotlin1.data.network.NetworkDataSourceImpl

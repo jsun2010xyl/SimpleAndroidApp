@@ -1,5 +1,6 @@
-package com.example.jsonkotlin1.data
+package com.example.jsonkotlin1.data.network
 
+import com.example.jsonkotlin1.data.ItemList
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient

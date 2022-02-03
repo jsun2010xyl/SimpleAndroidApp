@@ -25,8 +25,6 @@ class ItemListRepositoryImpl(
         }
     }
 
-    //                                       教程这里有一个out
-    //                             TODO : 注意这里是List<Item>
     @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getItemList(): LiveData<List<Item>> {
         return withContext(Dispatchers.IO){
@@ -35,7 +33,6 @@ class ItemListRepositoryImpl(
         }
     }
 
-    //                TODO : 这里应该是ItemList还是List<Item>，二者有没区别？
     private fun persistFetchedCurrentItemList(fetchedItemList: ItemList){
         GlobalScope.launch(Dispatchers.IO) {
             // fetchedItemList是ItemList，参数是List<Item>

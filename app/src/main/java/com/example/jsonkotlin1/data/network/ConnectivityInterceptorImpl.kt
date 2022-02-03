@@ -1,8 +1,9 @@
-package com.example.jsonkotlin1.data
+package com.example.jsonkotlin1.data.network
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Build
+import com.example.jsonkotlin1.data.network.ConnectivityInterceptor
 import okhttp3.Interceptor
 import okhttp3.Response
 

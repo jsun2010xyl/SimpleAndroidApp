@@ -2,7 +2,6 @@ package com.example.jsonkotlin1.data.network
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.jsonkotlin1.data.ItemApiService
 import com.example.jsonkotlin1.data.ItemList
 import java.lang.Exception
 
