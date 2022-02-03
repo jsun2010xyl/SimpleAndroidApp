@@ -12,7 +12,7 @@ class ConnectivityInterceptorImpl(context: Context) : ConnectivityInterceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         if (!isOnline()){
-            // TODO : 下面这句代码如果取消注释就会报错
+            // 下面这句代码如果取消注释就会报错
             //throw Exception()
         }
         return chain.proceed(chain.request())

@@ -1,6 +1,7 @@
 package com.example.jsonkotlin1.data.repository
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.example.jsonkotlin1.data.ItemList
@@ -45,8 +46,9 @@ class ItemListRepositoryImpl(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private suspend fun initItemList(){
-        if (isFetchedItemListNeeded(ZonedDateTime.now().minusHours(1))){
+        if (true){
             fetchItemList()
+            //Log.i("Msg", "Downloaded data from aws.")
         }
     }
 

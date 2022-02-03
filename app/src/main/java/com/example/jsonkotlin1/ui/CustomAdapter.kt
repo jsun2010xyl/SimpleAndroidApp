@@ -23,14 +23,14 @@ class CustomAdapter(private val mList: List<Item>) : RecyclerView.Adapter<Custom
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val itemsView = mList[position]
+        val item = mList[position]
 
         // sets the listId to the textView1 from our itemHolder class
-        holder.textView1.text = itemsView.listId.toString()
+        holder.textView1.text = item.listId.toString()
         // sets the name to the textView2 from our itemHolder class
-        holder.textView2.text = itemsView.name
+        holder.textView2.text = item.name
         // sets the id to the textView1 from our itemHolder class
-        holder.textView3.text = itemsView.id.toString()
+        holder.textView3.text = item.id.toString()
 
     }
 

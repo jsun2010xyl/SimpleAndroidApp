@@ -53,9 +53,10 @@ class MainActivity : ScopedActivity(), KodeinAware {
         val itemList = viewModel.itemList.await()
         itemList.observe(this@MainActivity, Observer {
             if (it == null) {
-                Log.i("Msg", "it == null")
+                //Log.i("Msg", "it == null")
                 return@Observer
             }
+            //Log.i("Msg",it.get(0).toString())
 
             // TODO : 无法显示items，这是为什么？
             adapter = CustomAdapter(it)
