@@ -43,9 +43,6 @@ class MainActivity : ScopedActivity(), KodeinAware {
 
         //val adapter = viewModel.getItems().value?.let { CustomAdapter(it) }
 
-        // Setting the Adapter with the recyclerview
-        recyclerview.adapter = adapter
-
     }
 
     private fun bindUI() = launch {
@@ -56,6 +53,8 @@ class MainActivity : ScopedActivity(), KodeinAware {
             }
             // TODO : 对吗？
             adapter = CustomAdapter(it)
+            // Setting the Adapter with the recyclerview
+            recyclerview.adapter = adapter
         })
     }
 
