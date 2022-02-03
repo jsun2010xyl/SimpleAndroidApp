@@ -1,6 +1,8 @@
 package com.example.jsonkotlin1.ui
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -36,25 +38,28 @@ class MainActivity : ScopedActivity(), KodeinAware {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ItemViewModel::class.java)
 
-        bindUI()
+        bindUI(this)
 
-        // this creates a vertical layout Manager
-        recyclerview.layoutManager = LinearLayoutManager(this)
+
 
         //val adapter = viewModel.getItems().value?.let { CustomAdapter(it) }
 
     }
 
-    private fun bindUI() = launch {
+    private fun bindUI(context: Context) = launch {
         val itemList = viewModel.itemList.await()
         itemList.observe(this@MainActivity, Observer {
             if (it == null) {
                 return@Observer
             }
-            // TODO : 对吗？
+
+            // TODO : 一片空白，无法显示items
             adapter = CustomAdapter(it)
             // Setting the Adapter with the recyclerview
             recyclerview.adapter = adapter
+            // this creates a vertical layout Manager
+            recyclerview.layoutManager = LinearLayoutManager(context)
+
         })
     }
 
