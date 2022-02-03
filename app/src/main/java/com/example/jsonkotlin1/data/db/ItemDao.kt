@@ -12,7 +12,7 @@ interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun upsert(itemEntry: List<Item>)
 
-    // TODO : 是不是没问题了？
+    // TODO : select语句有问题
     @Query("select * from Items where name is not null and name <> '' group by listId order by name ASC")
     fun getItems(): LiveData<List<Item>>
 }

@@ -13,6 +13,7 @@ import com.example.jsonkotlin1.data.db.entity.Item
 import com.example.jsonkotlin1.ui.base.ScopedActivity
 import com.example.jsonkotlin1.viewmodels.ItemViewModel
 import com.example.jsonkotlin1.viewmodels.ItemViewModelFactory
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
@@ -37,19 +38,13 @@ class MainActivity : ScopedActivity(), KodeinAware {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ItemViewModel::class.java)
 
-        // getting the recyclerview by its id
-        recyclerview = findViewById(R.id.recyclerview)
-        adapter = CustomAdapter(mutableListOf())
-        // Setting the Adapter with the recyclerview
-        recyclerview.adapter = adapter
-        // this creates a vertical layout Manager
-        recyclerview.layoutManager = LinearLayoutManager(this)
 
-        bindUI()
+
+        bindUI(this)
 
     }
 
-    private fun bindUI() = launch {
+    private fun bindUI(context: Context) = launch(Dispatchers.Main) {
         val itemList = viewModel.itemList.await()
         itemList.observe(this@MainActivity, Observer {
             if (it == null) {
@@ -58,10 +53,13 @@ class MainActivity : ScopedActivity(), KodeinAware {
             }
             //Log.i("Msg",it.get(0).toString())
 
-            // TODO : 无法显示items，这是为什么？
+            // getting the recyclerview by its id
+            recyclerview = findViewById(R.id.recyclerview)
             adapter = CustomAdapter(it)
-            adapter.notifyDataSetChanged()
-
+            // Setting the Adapter with the recyclerview
+            recyclerview.adapter = adapter
+            // this creates a vertical layout Manager
+            recyclerview.layoutManager = LinearLayoutManager(context)
         })
     }
 

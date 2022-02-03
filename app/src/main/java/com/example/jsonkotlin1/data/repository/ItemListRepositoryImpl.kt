@@ -46,6 +46,7 @@ class ItemListRepositoryImpl(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private suspend fun initItemList(){
+        // TODO : if (true)
         if (true){
             fetchItemList()
             //Log.i("Msg", "Downloaded data from aws.")
