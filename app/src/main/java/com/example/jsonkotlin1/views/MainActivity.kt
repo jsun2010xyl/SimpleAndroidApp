@@ -7,11 +7,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonkotlin1.R
 import com.example.jsonkotlin1.data.db.entity.Item
-import com.example.jsonkotlin1.utilities.InjectorUtils
 import com.example.jsonkotlin1.viewmodels.ItemViewModel
+import com.example.jsonkotlin1.viewmodels.ItemViewModelFactory
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.generic.instance
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), KodeinAware {
 
+    override val kodein by closestKodein()
+    private val viewModelFactory: ItemViewModelFactory by instance()
 
     private val items = mutableListOf<Item>()
 
@@ -26,14 +31,14 @@ class MainActivity : AppCompatActivity() {
         // getting the recyclerview by its id
         recyclerview = findViewById(R.id.recyclerview)
 
-        val factory = InjectorUtils.provideItemViewModelFactory()
-        viewModel = ViewModelProvider(this, factory).get(ItemViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(ItemViewModel::class.java)
 
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
-
-        //Latch.latch1.await()
+        
         val adapter = viewModel.getItems().value?.let { CustomAdapter(it) }
+
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
 
