@@ -1,27 +1,29 @@
-package com.example.jsonkotlin1.views
+package com.example.jsonkotlin1.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonkotlin1.R
 import com.example.jsonkotlin1.data.db.entity.Item
+import com.example.jsonkotlin1.ui.base.ScopedActivity
 import com.example.jsonkotlin1.viewmodels.ItemViewModel
 import com.example.jsonkotlin1.viewmodels.ItemViewModelFactory
+import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.generic.instance
 
-class MainActivity : AppCompatActivity(), KodeinAware {
+class MainActivity : ScopedActivity(), KodeinAware {
 
     override val kodein by closestKodein()
     private val viewModelFactory: ItemViewModelFactory by instance()
 
-    private val items = mutableListOf<Item>()
-
     private lateinit var viewModel: ItemViewModel
     private lateinit var recyclerview: RecyclerView
+    private lateinit var adapter: CustomAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -34,14 +36,27 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ItemViewModel::class.java)
 
+        bindUI()
+
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
-        
-        val adapter = viewModel.getItems().value?.let { CustomAdapter(it) }
+
+        //val adapter = viewModel.getItems().value?.let { CustomAdapter(it) }
 
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
 
+    }
+
+    private fun bindUI() = launch {
+        val itemList = viewModel.itemList.await()
+        itemList.observe(this@MainActivity, Observer {
+            if (it == null) {
+                return@Observer
+            }
+            // TODO : 对吗？
+            adapter = CustomAdapter(it)
+        })
     }
 
 }

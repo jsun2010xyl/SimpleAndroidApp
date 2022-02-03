@@ -1,4 +1,4 @@
-package com.example.jsonkotlin1.views
+package com.example.jsonkotlin1.ui
 
 import android.view.LayoutInflater
 import android.view.View
