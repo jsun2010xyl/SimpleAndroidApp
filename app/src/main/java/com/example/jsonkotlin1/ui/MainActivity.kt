@@ -33,12 +33,8 @@ class MainActivity : ScopedActivity(), KodeinAware {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ItemViewModel::class.java)
-
-
 
         bindUI(this)
 
@@ -48,10 +44,8 @@ class MainActivity : ScopedActivity(), KodeinAware {
         val itemList = viewModel.itemList.await()
         itemList.observe(this@MainActivity, Observer {
             if (it == null) {
-                //Log.i("Msg", "it == null")
                 return@Observer
             }
-            //Log.i("Msg",it.get(0).toString())
 
             // getting the recyclerview by its id
             recyclerview = findViewById(R.id.recyclerview)
