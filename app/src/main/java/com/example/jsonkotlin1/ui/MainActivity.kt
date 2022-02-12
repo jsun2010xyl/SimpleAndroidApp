@@ -2,14 +2,11 @@ package com.example.jsonkotlin1.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonkotlin1.R
-import com.example.jsonkotlin1.data.db.entity.Item
 import com.example.jsonkotlin1.ui.base.ScopedActivity
 import com.example.jsonkotlin1.viewmodels.ItemViewModel
 import com.example.jsonkotlin1.viewmodels.ItemViewModelFactory
@@ -52,7 +49,6 @@ class MainActivity : ScopedActivity(), KodeinAware {
             adapter = CustomAdapter(it)
             // Setting the Adapter with the recyclerview
             recyclerview.adapter = adapter
-            // this creates a vertical layout Manager
             recyclerview.layoutManager = LinearLayoutManager(context)
         })
     }
