@@ -15,7 +15,7 @@ class NetworkDataSourceImpl(private val apiService: ItemApiService) : NetworkDat
         try {
             val fetchedData = apiService.getItemList().await()
             _downloadedData.postValue(fetchedData)
-        }catch(e: Exception){ // TODO
+        }catch(e: Exception){
             Log.e("Connectivity", "No Internet connection.", e)
         }
     }
