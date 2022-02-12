@@ -40,7 +40,7 @@ class CustomAdapter(private val mList: List<Item>) : RecyclerView.Adapter<Custom
     }
 
     // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+    class ViewHolder(myItemView: View) : RecyclerView.ViewHolder(myItemView) {
         // Used to show listId
         val textView1: TextView = itemView.findViewById(R.id.textView1)
         // Used to show name

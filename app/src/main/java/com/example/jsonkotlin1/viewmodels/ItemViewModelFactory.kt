@@ -7,12 +7,9 @@ import com.example.jsonkotlin1.data.repository.ItemListRepository
 class ItemViewModelFactory(private val itemListRepository: ItemListRepository)
     : ViewModelProvider.NewInstanceFactory() {
 
-
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return ItemViewModel(itemListRepository) as T
     }
-
-
 
 }
