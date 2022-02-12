@@ -25,7 +25,7 @@ class ConnectivityInterceptorImpl(context: Context) : ConnectivityInterceptor {
         val connectivityManager = appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             val networkCapabilities = connectivityManager.activeNetwork ?: return false
-            return true // TODO: 可能不对
+            return true
 
         } else {
             val networkInfo = connectivityManager.activeNetworkInfo
